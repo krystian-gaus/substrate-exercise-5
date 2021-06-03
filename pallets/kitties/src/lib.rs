@@ -126,6 +126,8 @@ decl_module! {
 			let sender = ensure_signed(origin)?;
 
 			Kitties::<T>::try_mutate_exists(sender.clone(), kitty_id, |kitty| -> DispatchResult {
+				// we need this check
+				// because if a sender would send the kitty to himself the kitty would be deleted from the sender
 				if sender == to {
 					ensure!(kitty.is_some(), Error::<T>::InvalidKittyId);
 					return Ok(());
