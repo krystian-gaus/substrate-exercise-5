@@ -272,7 +272,7 @@ impl pallet_template::Config for Runtime {
 
 impl pallet_kitties::Config for Runtime {
 	type Event = Event;
-	type Randomness = RandomnessCollectiveFlip;
+	type Randomness = RandomnessCollectiveFlip; // Dependency injection, see pallets
 	type KittyIndex = u32;
 }
 
